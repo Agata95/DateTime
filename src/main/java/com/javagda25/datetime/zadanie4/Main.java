@@ -31,8 +31,8 @@ public class Main {
 
             Period okres = Period.between(data_start, data_stop);
 
-            System.out.println("Różnica dat: " + data_start + " i " + data_stop + " wynosi: " + okres.getYears() + " lat "
-                    + okres.getMonths() + " miesięcy " + okres.getDays() + " dni.");
+            System.out.println("Różnica dat: " + data_start + " i " + data_stop + " wynosi: " + okres.getYears() + " lat(a) "
+                    + okres.getMonths() + " miesięcy i " + okres.getDays() + " dni.");
         } catch (DateTimeParseException dtpe) {
             System.err.println("Zła data");
         }
