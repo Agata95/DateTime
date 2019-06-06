@@ -21,15 +21,19 @@ package com.javagda25.datetime.zadanie6;
 // * Wyświetl na końcu, ile użytkownik stracił czasu na bezsensownym sprawdzaniu daty śmierci
 // **(+300pkt) Dodaj nowe dodatkowe warunki i randomizuj niektóre wartości
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        LocalTime start = LocalTime.now();
 
         System.out.println("Podaj datę urodzenia w formacie: yyyy-MM-dd\":");
         String linia1 = scanner.nextLine();
@@ -75,9 +79,13 @@ public class Main {
         System.out.println("Wysolowana liczba: " + losowaLiczba);
 
         System.out.println("Prawdopodobnie Twoja data śmierci to: " + c);
-        Period okres = Period.between(dataUrodzenia,c);
+        Period okres = Period.between(dataUrodzenia, c);
 
         System.out.println("Będziesz żył: " + okres.getYears() + " lat i " + okres.getMonths() + " miesięcy.");
+        LocalTime stop = LocalTime.now();
+
+        Duration czasStracony = Duration.between(start, stop);
+        System.out.println("Straciłeś " + czasStracony.getSeconds() + " sekund na sprawdzaniu swojej daty śmierci.");
 
 
     }
