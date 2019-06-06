@@ -6,6 +6,7 @@ package com.javagda25.datetime.zadanie4;
 // LocalDateTime.parse(ciag_znakow, formatter).
 // Do wypisania dni/lat/miesięcy z Period, wykorzystaj jego gettery.
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -14,22 +15,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-//        LocalDate data_start = LocalDate.now();
-//        LocalDate data_stop = LocalDate.now();
 
         Scanner scanner = new Scanner(System.in);
 
         try {
-            System.out.println("Podaj pierwszą datę:");
-            String linia1 = scanner.nextLine();
-            System.out.println("Podaj drugą datę:");
-            String linia2 = scanner.nextLine();
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-            LocalDateTime data_start = LocalDateTime.parse(linia1, dateTimeFormatter);
-            LocalDateTime data_stop = LocalDateTime.parse(linia2, dateTimeFormatter);
+            System.out.println("Podaj pierwszą datę w formie YYYY-MM-DD:");
+            String linia1 = scanner.nextLine();
+            System.out.println("Podaj drugą datę w formie YYYY-MM-DD:");
+            String linia2 = scanner.nextLine();
 
-            Period okres = Period.between(data_start.toLocalDate(), data_stop.toLocalDate());
+            LocalDate data_start = LocalDate.parse(linia1, dateTimeFormatter);
+            LocalDate data_stop = LocalDate.parse(linia2, dateTimeFormatter);
+
+            Period okres = Period.between(data_start, data_stop);
 
             System.out.println("Różnica dat: " + data_start + " i " + data_stop + " wynosi: " + okres.getYears() + " lat "
                     + okres.getMonths() + " miesięcy " + okres.getDays() + " dni.");
